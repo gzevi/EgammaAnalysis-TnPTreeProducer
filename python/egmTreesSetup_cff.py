@@ -10,7 +10,7 @@ def setTagsProbes(process, options):
 
     eleHLTProducer = 'PatElectronTriggerCandProducer'
     gamHLTProducer = 'PatPhotonTriggerCandProducer'
-    hltObjects     = 'selectedPatTrigger'
+    hltObjects     = 'slimmedPatTrigger' # 'selectedPatTrigger' FOR 2016
     genParticles   = 'prunedGenParticles'
     SCEleMatcher   = 'PatElectronMatchedCandidateProducer' 
     if (options['useAOD']):
@@ -163,18 +163,22 @@ def setSequences(process, options):
     process.sc_sequence += process.probeSCEle
 
     process.ele_sequence = cms.Sequence(
-        process.probeEleCutBasedVeto      +
-        process.probeEleCutBasedLoose     +
-        process.probeEleCutBasedMedium    +
-        process.probeEleCutBasedTight     +
-        process.probeEleCutBasedVeto80X   +
-        process.probeEleCutBasedLoose80X  +
-        process.probeEleCutBasedMedium80X +
-        process.probeEleCutBasedTight80X  +
-        process.probeEleMVA80Xwp90        +
-        process.probeEleMVA80Xwp80        +
-	process.probeEleMiniIso		  +
-	process.probeEleMiniIsoEffArea	  +
+#        process.probeEleCutBasedVeto      +
+#        process.probeEleCutBasedLoose     +
+#        process.probeEleCutBasedMedium    +
+#        process.probeEleCutBasedTight     +
+#        process.probeEleCutBasedVeto80X   +
+#        process.probeEleCutBasedLoose80X  +
+#        process.probeEleCutBasedMedium80X +
+#        process.probeEleCutBasedTight80X  +
+#        process.probeEleMVA80Xwp90        +
+#        process.probeEleMVA80Xwp80        +
+        process.probeEleCutBasedVeto94X   +
+        process.probeEleCutBasedLoose94X  +
+        process.probeEleCutBasedMedium94X +
+        process.probeEleCutBasedTight94X  +
+        process.probeEleMVA94Xwp90        +
+        process.probeEleMVA94Xwp80        +
         process.probeEle 
         )
     if not options['useAOD'] : process.ele_sequence += process.probeEleHLTsafe
@@ -182,15 +186,20 @@ def setSequences(process, options):
     process.pho_sequence = cms.Sequence(
         process.goodPhotons               +
         process.egmPhotonIDSequence       +
-        process.probePhoCutBasedLoose     +
-        process.probePhoCutBasedMedium    +
-        process.probePhoCutBasedTight     +
-        process.probePhoMVA               +
-        #        process.probePhoCutBasedLoose80X  +
-        #        process.probePhoCutBasedMedium80X +
-        #        process.probePhoCutBasedTight80X  +
-        #        process.probePhoMVA80Xwp90       +
-        #        process.probePhoMVA80Xwp80       +
+        #process.probePhoCutBasedLoose     +
+        #process.probePhoCutBasedMedium    +
+        #process.probePhoCutBasedTight     +
+        #process.probePhoMVA               +
+        process.probePhoCutBasedLoose80X  +
+        process.probePhoCutBasedMedium80X +
+        process.probePhoCutBasedTight80X  +
+        process.probePhoMVA80Xwp90       +
+        process.probePhoMVA80Xwp80       +
+        process.probePhoCutBasedLoose94X  +
+        process.probePhoCutBasedMedium94X +
+        process.probePhoCutBasedTight94X  +
+        process.probePhoMVA94Xwp90       +
+        process.probePhoMVA94Xwp80       +
         process.probePho                
         )
 
