@@ -79,12 +79,6 @@ EleProbeVariablesToStore = cms.PSet(
     el_trkIso        = cms.string("trackIso"),
     el_dr03TkSumPt   = cms.string("dr03TkSumPt"),
 
-#    #miniIsolation
-#    el_miniIsoChg    = cms.InputTag("probeEleMiniIso:h+-DR020-BarVeto000-EndVeto001-kt1000-Min005"),
-#    el_miniIsoNeu    = cms.InputTag("probeEleMiniIso:h0-DR020-BarVeto000-EndVeto000-kt1000-Min005"),
-#    el_miniIsoPho    = cms.InputTag("probeEleMiniIso:gamma-DR020-BarVeto000-EndVeto008-kt1000-Min005"),
-#    el_miniIsoEffA   = cms.InputTag("probeEleMiniIsoEffArea:EA-DR020-kt1000-Min005"),
-
     # tracker
     el_tk_pt        = cms.string("gsfTrack().ptMode"),
     el_tk_eta       = cms.string("gsfTrack().etaMode"),
@@ -96,6 +90,14 @@ EleProbeVariablesToStore = cms.PSet(
     el_dxy           = cms.InputTag("eleVarHelper:dxy"),
     el_3charge       = cms.string("chargeInfo().isGsfCtfScPixConsistent"),
     el_ecalDriven    = cms.string("ecalDrivenSeed"),
+
+    # SUSY (based on NanoAOD producers)
+    el_miniIsoChg = cms.string("userFloat('miniIsoChg')"),
+    el_miniIsoAll = cms.string("userFloat('miniIsoAll')"),
+    el_ptRatio = cms.string("userFloat('ptRatio')"),
+    el_ptRel = cms.string("userFloat('ptRel')"),
+    el_MVATTH  = cms.InputTag("electronMVATTH"),
+
     
     )
 
